@@ -1,8 +1,8 @@
 #Creating AWS IAM Policy
 resource "aws_iam_policy" "policy" {
-  name        = "${var.component}-$(var.env}-ssm-pm-policy"
+  name        = "${var.component}-${var.env}-ssm-pm-policy"
   path        = "/"
-  description = "${var.component}-$(var.env}-ssm-pm-policy"
+  description = "${var.component}-${var.env}-ssm-pm-policy"
 
   policy = jsonencode({
     "Version": "2012-10-17",
