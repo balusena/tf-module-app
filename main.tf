@@ -142,7 +142,7 @@ resource "aws_security_group" "sg" {
   }
 }
 
-resource "aws_instance" "test" {
+resource "aws_instance" "test-ec2" {
 
   ami = "data.aws_ami.ami.id"
   instance_type = "t3.micro"
