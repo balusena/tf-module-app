@@ -13,3 +13,4 @@ variable "desired_capacity" {}
 variable "min_size" {}
 variable "max_size" {}
 variable "allow_ssh_cidr" {}
+variable "lb_dns_name" {}

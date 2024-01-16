@@ -81,14 +81,14 @@ resource "aws_autoscaling_group" "main" {
   }
 }
 
-## Creating an AWS Route 53 DNS record in the specified hosted zone
-#resource "aws_route53_record" "dns" {
-#  zone_id = "Z09157091J32F5PJ5K67Y"
-#  name    = "${var.component}-dev"
-#  type    = "A"
-#  ttl     = 30
-#  records = [aws_instance.instance.private_ip]
-#}
+# Creating an AWS Route 53 DNS record in the specified hosted zone
+resource "aws_route53_record" "dns" {
+  zone_id = "Z09157091J32F5PJ5K67Y"
+  name    = "${var.component}-dev"
+  type    = "CNAME"
+  ttl     = 30
+  records = [var.lb_dns_name]
+}
 
 
 
