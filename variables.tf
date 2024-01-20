@@ -18,3 +18,4 @@ variable "lb_dns_name" {}
 variable "listener_arn" {}
 variable "lb_rule_priority" {}
 variable "extra_param_access" {}
+variable "allow_prometheus_cidr" {}
