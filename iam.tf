@@ -19,6 +19,7 @@ resource "aws_iam_policy" "policy" {
         ],
         "Resource": concat([
         "arn:aws:ssm:us-east-1:828448425071:parameter/roboshop.${var.env}.${var.component}.*",
+        "arn:aws:ssm:us-east-1:828448425071:parameter/roboshop.nexus.*",
         var.kms_arn
         ], var.extra_param_access)
       }
