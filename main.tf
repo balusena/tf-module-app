@@ -66,7 +66,7 @@ resource "aws_lb_listener_rule" "main" {
 
   condition {
     host_header {
-      values = ["${var.component}-${var.env}.robobal.store"]
+      values = ["${local.dns_name}.robobal.store"]
     }
   }
 }
@@ -119,7 +119,7 @@ resource "aws_autoscaling_group" "main" {
 # Creating an AWS Route 53 DNS record in the specified hosted zone
 resource "aws_route53_record" "dns" {
   zone_id = "Z09157091J32F5PJ5K67Y"
-  name    = "${var.component}-${var.env}"
+  name    =  local.dns_name
   type    = "CNAME"
   ttl     = 30
   records = [var.lb_dns_name]
