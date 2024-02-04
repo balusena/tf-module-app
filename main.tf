@@ -103,6 +103,7 @@ resource "aws_launch_template" "main" {
 # }
 }
 
+#Creating AWS Auto Scaling Group
 resource "aws_autoscaling_group" "main" {
   desired_capacity    = var.desired_capacity
   max_size            = var.max_size
@@ -113,6 +114,20 @@ resource "aws_autoscaling_group" "main" {
   launch_template {
     id      = aws_launch_template.main.id
     version = "$Latest"
+  }
+}
+
+#Creating AWS Auto Scaling Group Dynamic Policy
+resource "aws_autoscaling_policy" "asg-cpu-rule" {
+  name                      = "CPULoadDetect"
+  autoscaling_group_name    = aws_autoscaling_group.main.name
+  policy_type               = "TargetTrackingScaling"
+  estimated_instance_warmup = 120
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 30.0
   }
 }
 
